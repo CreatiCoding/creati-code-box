@@ -4,7 +4,6 @@
   "main": "app.ts",
   "scripts": {
     "start": "nodemon -e ts -x ts-node -r tsconfig-paths/register src/app.ts",
-    "start:dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "creaticoding",
@@ -12,6 +11,8 @@
   "dependencies": {
     "@types/express": "^4.16.1",
     "express": "^4.16.4",
+    "knex": "^0.16.5",
+    "mysql": "^2.17.1",
     "nodemon": "^1.18.11",
     "typescript": "^3.4.5"
   },
