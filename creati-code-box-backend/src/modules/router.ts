@@ -1,7 +1,6 @@
 import { Router as newRouter, Express } from 'express';
 
-import { controllers } from '@/modules';
-const { UserController } = controllers;
+import { UserController } from '@/modules/controller';
 const routers = [{ '/user': new UserController() }];
 
 export default class Router {

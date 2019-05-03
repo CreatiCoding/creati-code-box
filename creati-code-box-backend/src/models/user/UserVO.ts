@@ -1,4 +1,4 @@
-export default class UserModel {
+export default class UserVO {
   private user_idx: number;
   private id: string;
   private password: string;

@@ -1,8 +1,7 @@
 import newExpress from 'express';
 import Router from '@/modules/router';
 import DB from '@/utils/database';
-import { models } from '@/models';
-const { UserModel } = models;
+import { UserVO } from '@/models/vo';
 
 export default class Server {
   constructor(
@@ -22,6 +21,7 @@ export default class Server {
       'select * from USER where user_idx = ? ',
       [11]
     );
-    const user = new UserModel(res[0]);
+    const user = new UserVO(res[0]);
+    console.log(user);
   }
 }
