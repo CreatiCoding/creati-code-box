@@ -1,3 +1,10 @@
-import * as models from './models';
+import UserController from '@/modules/user/UserController';
+import UserService from '@/modules/user/UserService';
 
-export { models };
+export const controllers = {
+  UserController
+};
+
+export const services = {
+  UserController
+};

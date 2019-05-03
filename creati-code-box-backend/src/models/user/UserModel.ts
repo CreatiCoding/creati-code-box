@@ -135,4 +135,8 @@ export default class UserModel {
   public set $status_code(value: string) {
     this.status_code = value;
   }
+
+  constructor(model: object = {}) {
+    Object.assign(this, model);
+  }
 }

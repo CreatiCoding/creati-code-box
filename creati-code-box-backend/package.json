@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "app.ts",
   "scripts": {
-    "start": "nodemon -e ts -x ts-node -r tsconfig-paths/register src/app.ts",
+    "start": "nodemon -e ts -x ts-node -r tsconfig-paths/register src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "creaticoding",
   "license": "MIT",
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
+    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "knex": "^0.16.5",
     "mysql": "^2.17.1",

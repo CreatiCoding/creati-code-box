@@ -19,7 +19,8 @@ export default class DB {
       pool: { min: 0, max: 7 }
     });
   }
-  async sql(sql: string, args: Array<any>): Promise<object> {
-    return this.instance.raw(sql, args);
+  async sql(sql: string, args: Array<any>): Promise<Array<object>> {
+    const result: Array<Array<object>> = await this.instance.raw(sql, args);
+    return result[0];
   }
 }
