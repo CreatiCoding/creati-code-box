@@ -4,7 +4,7 @@ require('dotenv').config({
 
 import Server from './Server';
 import Router from '@/modules/Router';
-import DB from '@/utils/database';
+import { DB } from '@/utils';
 
 const server = new Server(new Router(), new DB());
 

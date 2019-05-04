@@ -1,6 +1,6 @@
 import newExpress from 'express';
 import Router from '@/modules/Router';
-import DB from '@/utils/database';
+import { DB } from '@/utils';
 import { UserVO } from '@/models/vo';
 
 export default class Server {
