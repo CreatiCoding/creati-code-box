@@ -3,7 +3,7 @@ import Api from './Api';
 export default class Github {
   constructor(private api: Api = new Api()) {}
   async findRepositoryList(user: string): Promise<Array<string>> {
-    const result = await this.api.post(
+    const result = await this.api.get(
       `https://api.github.com/users/${user}/repos`,
       {
         headers: {
