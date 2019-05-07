@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: require('path').resolve(process.cwd(), 'key/.envrc')
+});
 // import { Storage } from '@/utils';
 import { Git } from '@/utils';
 import { Api, Github } from '@/apis';
