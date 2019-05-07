@@ -2,12 +2,20 @@ require('dotenv').config({
   path: require('path').resolve(process.cwd(), 'key/.envrc')
 });
 // import { Storage } from '@/utils';
-import { Git } from '@/utils';
-import { Api, Github } from '@/apis';
+import { Crypto } from '@/utils';
+// import { Api, Github } from '@/apis';
 try {
   (async () => {
-    const g = new Github();
-    await g.findRepositoryList('creaticoding');
+    const c = new Crypto();
+    const word = await c.hashing('passw@rd', 'salting');
+    const str: string = word.toString('utf8');
+    const arr: Array<string> = str.split('');
+    console.log(arr.length);
+    for (let i in arr) {
+      console.log(arr[i].charCodeAt(0));
+    }
+    console.log(word.toString());
+    // await g.findRepositoryList('creaticoding');
     // const a = new Api();
     // console.log(
     //   await a.get('https://google.com', { q: '@@@@@@@@@@@@@@@@@@@@' })
