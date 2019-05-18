@@ -12,8 +12,7 @@ if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   npm install -g yarn && yarn
   yarn start:d
   exit 1;
-fi
-if [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
+elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   cd creati-code-box-frontend 
   npm install -g yarn && yarn
   yarn start:p
