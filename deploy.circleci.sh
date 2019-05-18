@@ -18,3 +18,4 @@ elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
         cd creati-code-box
         nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
 ENDSSH;
+fi
