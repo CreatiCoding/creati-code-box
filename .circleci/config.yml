@@ -17,7 +17,7 @@ jobs:
       - run: echo ${CIRCLE_BRANCH}
       - run:
           command: |
-            ls
+            ls | xargs echo
             echo "1";
 
 #             if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
