@@ -8,6 +8,7 @@ DEPLOY_MASTER_BACKEND='deploy/master/backend'
 echo $PWD
 
 npm i -g yarn
+source ~/.profile
 
 if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   cd ../..
