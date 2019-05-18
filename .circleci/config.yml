@@ -20,4 +20,4 @@ jobs:
       - checkout
       - run:
           command: |
-            ssh -p 22 ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no < './deploy/deploy.circleci.sh'
+            ./deploy/deploy.circleci.sh
