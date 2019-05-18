@@ -5,12 +5,15 @@
   "author": "creaticoding <creaticoding@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
+    "start:p": "npm run clean && npm run nuxt:b && sudo PORT=80 npm run nuxt:s",
+    "start:d": "npm run clean && PORT=8080 npm run nuxt:d",
+    "nuxt:d": "nuxt",
+    "nuxt:b": "nuxt build",
+    "nuxt:s": "nuxt start",
+    "nuxt:g": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "clean": "sudo rm -rf .nuxt"
   },
   "dependencies": {
     "nuxt": "^2.0.0"
