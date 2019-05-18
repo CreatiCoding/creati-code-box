@@ -4,30 +4,40 @@
 #
 version: 2
 jobs:
-  build:
+  depoly_master_frontend:
+    branches:
+      only:
+        - deploy/master/frontend
     docker:
-      # specify the version you desire here
-      - image: alpine:latest
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/ccb
-
+      - image: creaticoding/alpine:1.0.0
     steps:
-      - checkout
-      # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "package.json" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-      - run: echo hello
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests!
-      # - run: yarn test
+      - run:
+          command: |
+            ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
+              sudo pgrep -f nuxt | xargs kill -9
+              sudo rm -rf master_frontend
+              mkdir master_frontend
+              cd master_frontend
+              git clone --branch deploy/master/frontend https://github.com/CreatiCoding/creati-code-box
+              cd creati-code-box
+              nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
+            ENDSSH
+
+  depoly_develop_frontend:
+    branches:
+      only:
+        - deploy/develop/frontend
+    docker:
+      - image: creaticoding/alpine:1.0.0
+    steps:
+      - run:
+          command: |
+            ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
+              sudo pgrep -f nuxt | xargs kill -9
+              sudo rm -rf develop_frontend
+              mkdir develop_frontend
+              cd develop_frontend
+              git clone --branch deploy/develop/frontend https://github.com/CreatiCoding/creati-code-box
+              cd creati-code-box
+              nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
+            ENDSSH
