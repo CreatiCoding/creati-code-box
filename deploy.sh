@@ -23,7 +23,7 @@ if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   exit 1;
 elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   cd ../..
-  pgrep -f master.*frontend | xargs --no-run-if-empty kill -9
+  pgrep -f master.*frontend | xargs --no-run-if-empty sudo kill -9
   sudo rm -rf master_frontend
   mv master_frontend_new master_frontend
   cd master_frontend
