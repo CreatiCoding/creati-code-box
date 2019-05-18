@@ -28,7 +28,7 @@ jobs:
                 git clone --branch deploy/master/frontend https://github.com/CreatiCoding/creati-code-box
                 cd creati-code-box
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
-              ENDSSH;
+ENDSSH;
               exit 0;
             elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
               echo "3";
@@ -40,7 +40,7 @@ jobs:
                 git clone --branch deploy/develop/frontend https://github.com/CreatiCoding/creati-code-box
                 cd creati-code-box
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
-              ENDSSH;
+ENDSSH;
               exit 0;
             else
               echo "4";
