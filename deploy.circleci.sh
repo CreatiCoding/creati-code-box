@@ -1,4 +1,4 @@
-ls ~
+ls -al ~
 if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
     ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
         sudo pgrep -f nuxt | xargs kill -9
