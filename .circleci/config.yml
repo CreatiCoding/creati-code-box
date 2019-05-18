@@ -5,29 +5,39 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - deploy/master/frontend
+        - deploy/develop/frontend
+        - deploy/master/backend
+        - deploy/develop/backend
     docker:
-      # specify the version you desire here
-      - image: alpine:latest
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/ccb
-
+      - image: creaticoding/alpine:1.0.0
     steps:
-      - checkout
-      # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #       - v1-dependencies-{{ checksum "package.json" }}
-      #       # fallback to using the latest cache if no exact match is found
-      #       - v1-dependencies-
-      - run: echo hello
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests!
-      # - run: yarn test
+      - add_ssh_keys:
+          fingerprints:
+            - 'be:45:07:d4:ae:48:21:d9:ca:5d:ef:c2:41:03:ba:d9'
+      # - checkout
+      - run:
+          name: deploy
+          command: |
+            ls -al ~/.ssh/$SSH_FILE
+            pwd
+            if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
+              ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no '
+                mkdir master_frontend_new
+                cd master_frontend_new
+                git clone --branch deploy/master/frontend https://github.com/CreatiCoding/creati-code-box && cd creati-code-box
+                nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
+              '
+            elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
+              ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no '
+                mkdir develop_frontend_new
+                cd develop_frontend_new
+                git clone --branch deploy/develop/frontend https://github.com/CreatiCoding/creati-code-box && cd creati-code-box
+                nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
+              '
+              echo 'success'
+            else
+              echo 'pass'
+            fi
