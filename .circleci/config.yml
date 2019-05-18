@@ -22,4 +22,5 @@ jobs:
           command: |
             # nohup ./deploy/deploy.circleci.sh </dev/null >/dev/null 2>&1 &
             # ./
+            ls ~/.ssh/$SSH_FILE
             ssh -p 22 ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no 'echo 1234'
