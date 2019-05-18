@@ -9,13 +9,11 @@ echo $PWD
 
 if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   cd creati-code-box-frontend 
-  npm install -g yarn && yarn
-  yarn start:d
+  npm run start:d
   exit 1;
 elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   cd creati-code-box-frontend 
-  npm install -g yarn && yarn
-  yarn start:p
+  npm run start:p
   exit 1;
 else
   echo 'other branch'
