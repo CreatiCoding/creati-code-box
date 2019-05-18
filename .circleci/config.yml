@@ -19,6 +19,7 @@ jobs:
             - 'be:45:07:d4:ae:48:21:d9:ca:5d:ef:c2:41:03:ba:d9'
       # - checkout
       - run:
+          name: deploy
           command: |
             ls -al ~/.ssh/$SSH_FILE
             pwd
@@ -27,10 +28,10 @@ jobs:
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no 'sudo pgrep -f nuxt | xargs kill -9; sudo rm -rf master_frontend; mkdir master_frontend; cd master_frontend; git clone --branch deploy/master/frontend https://github.com/CreatiCoding/creati-code-box; cd creati-code-box; nohup ./deploy.sh </dev/null >/dev/null 2>&1 &;'
             elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no '/bin/sh -c "
-              sudo rm -rf develop_frontend; 
-              mkdir develop_frontend; 
-              cd develop_frontend; 
-              git clone --branch deploy/develop/frontend https://github.com/CreatiCoding/creati-code-box && cd creati-code-box; 
+              sudo rm -rf develop_frontend
+              mkdir develop_frontend
+              cd develop_frontend
+              git clone --branch deploy/develop/frontend https://github.com/CreatiCoding/creati-code-box && cd creati-code-box
               "'
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no '/bin/sh -c "cd ./develop_frontend/creati-code-box; nohup ./deploy.sh </dev/null >/dev/null 2>&1 &" 2>/dev/null'
               echo 'success'
