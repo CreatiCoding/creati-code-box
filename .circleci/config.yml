@@ -29,6 +29,7 @@ jobs:
                 cd creati-code-box
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
               ENDSSH;
+              exit 0;
             elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
               echo "3";
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
@@ -40,9 +41,11 @@ jobs:
                 cd creati-code-box
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
               ENDSSH;
+              exit 0;
             else
               echo "4";
               echo "other branch or error occur";
+              exit 0;
             fi
 workflows:
   version: 2
