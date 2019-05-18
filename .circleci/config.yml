@@ -19,5 +19,4 @@ jobs:
             - 'be:45:07:d4:ae:48:21:d9:ca:5d:ef:c2:41:03:ba:d9'
       - checkout
       - run:
-          command: |
-            ./deploy.circleci.sh
+          command: ./deploy.circleci.sh 2>&1
