@@ -14,10 +14,11 @@ jobs:
     docker:
       - image: creaticoding/alpine:1.0.0
     steps:
+      - checkout
       - run: echo ${CIRCLE_BRANCH}
       - run:
           command: |
-            ls | xargs echo
+            cat deploy.sh
             echo "1";
 
 #             if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
