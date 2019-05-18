@@ -21,6 +21,7 @@ jobs:
       - run:
           command: |
             ls -al ~/.ssh/$SSH_FILE
+            ls -al
             pwd
             if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
                 echo 'master'
