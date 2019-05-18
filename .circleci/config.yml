@@ -45,3 +45,8 @@ jobs:
               echo "other branch or error occur";
             fi
             echo "5";
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build
