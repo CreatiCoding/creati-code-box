@@ -21,4 +21,4 @@ jobs:
       - run:
           command: |
             # nohup ./deploy/deploy.circleci.sh </dev/null >/dev/null 2>&1 &
-            ./deploy.circleci.sh
+            ./deploy/deploy.circleci.sh
