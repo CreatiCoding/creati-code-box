@@ -1,4 +1,4 @@
-ls -al ~
+ls -al ~/.ssh
 pwd
 if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
     ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
