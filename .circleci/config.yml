@@ -47,8 +47,3 @@ jobs:
               echo "other branch or error occur";
               exit 0;
             fi
-workflows:
-  version: 2
-  asdasdsda:
-    jobs:
-      - build
