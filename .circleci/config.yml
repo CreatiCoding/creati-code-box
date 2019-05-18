@@ -22,4 +22,4 @@ jobs:
           command: |
             # nohup ./deploy/deploy.circleci.sh </dev/null >/dev/null 2>&1 &
             # ./
-            ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no < ./deploy/develop.frontend.sh 2>&1
+            ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/$SSH_FILE -o StrictHostKeyChecking=no < 'echo \'hello world\''
