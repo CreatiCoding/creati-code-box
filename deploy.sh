@@ -7,6 +7,8 @@ DEPLOY_MASTER_BACKEND='deploy/master/backend'
 
 echo $PWD
 
+npm i -g yarn
+
 if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   cd ../..
   pgrep -f develop.*frontend | xargs --no-run-if-empty kill -9
@@ -15,8 +17,8 @@ if [ "$BRANCH" = "$DEPLOY_DEVELOP_FRONTEND" ]; then
   cd develop_frontend
   cd creati-code-box
   cd creati-code-box-frontend 
-  npm i
-  npm run start:d
+  yarn
+  yarn start:d
   exit 1;
 elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   cd ../..
@@ -26,8 +28,8 @@ elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   cd master_frontend
   cd creati-code-box
   cd creati-code-box-frontend 
-  npm i
-  npm run start:p
+  yarn
+  yarn start:p
   exit 1;
 else
   echo 'other branch'
