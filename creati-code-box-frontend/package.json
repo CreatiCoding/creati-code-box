@@ -7,7 +7,7 @@
   "scripts": {
     "start:p": "npm run clean && npm run nuxt:b && sudo PORT=80 npm run nuxt:s",
     "start:d": "npm run clean && PORT=8080 npm run nuxt:d",
-    "nuxt:d": "nuxt",
+    "nuxt:d": "HOST=0.0.0.0 nuxt",
     "nuxt:b": "nuxt build",
     "nuxt:s": "nuxt start",
     "nuxt:g": "nuxt generate",
