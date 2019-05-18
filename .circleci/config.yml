@@ -17,7 +17,9 @@ jobs:
       - run: echo ${CIRCLE_BRANCH}
       - run:
           command: |
+            echo "1";
             if [ "$CIRCLE_BRANCH" = "deploy/master/frontend" ]; then
+              echo "2";
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
                 sudo pgrep -f nuxt | xargs kill -9
                 sudo rm -rf master_frontend
@@ -28,6 +30,7 @@ jobs:
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
               ENDSSH;
             elif [ "$CIRCLE_BRANCH" = "deploy/develop/frontend" ]; then
+              echo "3";
               ssh ubuntu@$SERVER_HOSTNAME -i ~/.ssh/id_creco2019 -o StrictHostKeyChecking=no <<'ENDSSH'
                 sudo pgrep -f nuxt | xargs kill -9
                 sudo rm -rf develop_frontend
@@ -38,5 +41,7 @@ jobs:
                 nohup ./deploy.sh </dev/null >/dev/null 2>&1 &
               ENDSSH;
             else
+              echo "4";
               echo "other branch or error occur";
             fi
+            echo "5";
