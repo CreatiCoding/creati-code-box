@@ -17,4 +17,6 @@ elif [ "$BRANCH" = "$DEPLOY_MASTER_FRONTEND" ]; then
   npm install -g yarn && yarn
   yarn start:p
   exit 1;
+else
+  echo 'other branch'
 fi
