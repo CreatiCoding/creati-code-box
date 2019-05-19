@@ -2,7 +2,7 @@
   <section class="container">
     <div>
       <app-logo/>
-      <h1 class="title">creati-code-box-frontend updated</h1>
+      <h1 class="title">creati-code-box-frontend UPDATED</h1>
       <h2 class="subtitle">creati code box frontend with nuxt</h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
