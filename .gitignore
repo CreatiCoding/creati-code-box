@@ -343,10 +343,6 @@ lint/tmp/
 *.asp
 *.cer
 *.csr
-*.css
-*.htm
-*.html
-*.js
 *.jsp
 *.php
 *.rss
@@ -378,3 +374,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/web,node,macos,windows,reactnative,visualstudiocode
+
+
+key/

@@ -16,6 +16,8 @@
     "clean": "sudo rm -rf .nuxt"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv-webpack": "^1.7.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {

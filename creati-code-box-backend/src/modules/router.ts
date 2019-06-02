@@ -1,7 +1,10 @@
 import { Router as newRouter, Express } from 'express';
 
-import { UserController } from '@/modules/controller';
-const routers = [{ '/user': new UserController() }];
+import { UserController, TestController } from '@/modules/controller';
+const routers = [
+  { '/user': new UserController() },
+  { '/test': new TestController() }
+];
 
 export default class Router {
   constructor(private router: newRouter = newRouter()) {}

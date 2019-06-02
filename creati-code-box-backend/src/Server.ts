@@ -11,6 +11,26 @@ export default class Server {
   ) {}
 
   async start() {
+    // FOR CORS
+    this.app.all('/*', function(req, res, next) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'POST, GET');
+      res.header('Access-Control-Allow-Headers', 'X-Requested-With, code');
+      res.header('Access-Control-Request-Headers', 'code');
+      next();
+    });
+    // FOR AUTH
+    this.app.use('/*', function(req, res, next) {
+      // FOR CORS
+      if (req.method === 'OPTIONS') {
+        return next();
+      }
+      // FOR AUTH
+      if (!req.headers.code || req.headers.code !== process.env.CODE) {
+        return res.status(404).send(`Not found ${JSON.stringify(req.headers)}`);
+      }
+      return next();
+    });
     this.app.listen(3000, function() {
       console.log('Start listening on http://localhost:3000');
     });

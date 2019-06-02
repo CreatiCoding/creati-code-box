@@ -7,17 +7,36 @@
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+        <h1>{{data}}</h1>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-import AppLogo from "~/components/AppLogo.vue";
 
+<script >
+import AppLogo from "~/components/AppLogo.vue";
+import axios from "axios";
 export default {
   components: {
     AppLogo
+  },
+  data() {
+    return {
+      data: ""
+    };
+  },
+  async created() {
+    if (!process.client) return;
+    this.data = window.location.protocol;
+    const protocol = window.location.protocol;
+    const hostname = window.location.hostname;
+    const port = 3000;
+    axios.defaults.headers.common["code"] = process.env.CODE;
+    const { data } = await axios.get(
+      `${protocol}//${hostname}:${port}/test/hello`
+    );
+    this.data = `'${data}' is from server`;
   }
 };
 </script>
