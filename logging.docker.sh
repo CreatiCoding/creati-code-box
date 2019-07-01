@@ -1,0 +1,1 @@
+docker-compose --file docker/docker-compose.yml logs -f --tail="100"
