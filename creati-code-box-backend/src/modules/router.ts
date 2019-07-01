@@ -1,6 +1,8 @@
 import { Router as newRouter, Express } from 'express';
 
 import { UserController, TestController } from '@/modules/controller';
+
+// TODO #refactoring about inject controller
 const routers = [
   { '/user': new UserController() },
   { '/test': new TestController() }
